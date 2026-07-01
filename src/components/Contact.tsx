@@ -21,6 +21,8 @@ export default function Contact() {
             <a href={resume.linkedin} target="_blank" rel="noopener noreferrer" className="contact-item">LinkedIn</a>
             <span className="contact-sep">•</span>
             <a href={resume.github} target="_blank" rel="noopener noreferrer" className="contact-item">GitHub</a>
+            <span className="contact-sep">•</span>
+            <a href={resume.website} target="_blank" rel="noopener noreferrer" className="contact-item">greergoodman.dev</a>
           </div>
         </div>
       </div>

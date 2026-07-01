@@ -5,6 +5,7 @@ export const resume = {
   title: "Full Stack Software Engineer",
   phone: "",
   email: "greergoodman6 [at] gmail [dot] com",
+  website: "https://greergoodman.dev",
   linkedin: "www.linkedin.com/in/greer-g-555820114",
   github: "https://github.com/johncaveson",
   summary: [
@@ -158,7 +159,12 @@ export const resume = {
     {
       name: "Jira TUI",
       description: "Built a terminal user interface for Jira in Rust with agentic assistance from Gemini, exploring async Rust, TUI frameworks, and REST API integration.",
-      url: "#",
+      url: "https://github.com/johncaveson/jira-tui",
+    },
+    {
+      name: "Resume Site",
+      description: "Designed and built a personal portfolio and resume site using React, TypeScript, and Vite, deployed via AWS S3 and CloudFront with infrastructure as code.",
+      url: "https://greergoodman.dev",
     },
   ],
 
