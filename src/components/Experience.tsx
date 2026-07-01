@@ -1,5 +1,9 @@
 import { resume } from '../data/resume'
 
+function slug(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
 export default function Experience() {
   return (
     <section id="experience" className="experience section">
@@ -8,7 +12,7 @@ export default function Experience() {
         <h2 className="section-title">Professional Experience</h2>
         <div className="timeline">
           {resume.experience.map((exp, i) => (
-            <div key={i} className="timeline-item">
+            <div key={i} id={`exp-${slug(exp.company)}`} className="timeline-item">
               <div className="timeline-marker" />
               <div className="timeline-content">
                 <div className="timeline-header">

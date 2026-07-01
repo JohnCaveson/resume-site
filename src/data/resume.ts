@@ -1,3 +1,5 @@
+export type SkillItem = string | { name: string; ref?: string }
+
 export const resume = {
   name: "Greer Goodman",
   title: "Full Stack Software Engineer",
@@ -13,31 +15,66 @@ export const resume = {
   skills: [
     {
       category: "Languages",
-      items: ["C#", "TypeScript", "JavaScript", "SQL", "Rust"],
+      items: [
+        { name: "C#", ref: "Vantaca" },
+        { name: "TypeScript", ref: "Vantaca" },
+        "JavaScript",
+        "SQL",
+        { name: "Rust", ref: "project:Jira TUI" },
+      ],
     },
     {
       category: "Tools",
-      items: ["Vim", "Git", "VS Code", "LaunchDarkly"],
+      items: ["Vim", "Git", "VS Code", { name: "LaunchDarkly", ref: "Vantaca" }],
     },
     {
       category: "Frontend",
-      items: ["React", "Angular", "Vue.js", "MobX", "Axios"],
+      items: [
+        { name: "React", ref: "Vantaca" },
+        { name: "Angular", ref: "James River Equipment" },
+        "Vue.js",
+        { name: "MobX", ref: "Owens & Minor" },
+        "Axios",
+      ],
     },
     {
       category: "Backend",
-      items: [".NET Core", "ASP.NET", "REST APIs", "Minimal APIs", "Microservices", "Node.js"],
+      items: [
+        { name: ".NET Core", ref: "Vantaca" },
+        "ASP.NET",
+        { name: "REST APIs", ref: "Vantaca" },
+        { name: "Minimal APIs", ref: "Vantaca" },
+        "Node.js",
+        { name: "Microservices", ref: "Owens & Minor" },
+      ],
     },
     {
       category: "Cloud & Infrastructure",
-      items: ["Azure", "Azure DevOps", "Kubernetes", "Terraform", "RabbitMQ", "Azure Key Vault"],
+      items: [
+        { name: "Kubernetes", ref: "Mapcom Systems" },
+        { name: "Terraform", ref: "Mapcom Systems" },
+        { name: "Azure", ref: "Owens & Minor" },
+        "Azure DevOps",
+        "RabbitMQ",
+        { name: "Azure Key Vault", ref: "Owens & Minor" },
+      ],
     },
     {
       category: "Databases",
-      items: ["SQL Server", "Cosmos DB"],
+      items: [
+        { name: "SQL Server", ref: "Owens & Minor" },
+        "Cosmos DB",
+      ],
     },
     {
       category: "Development Practices",
-      items: ["Agile", "CI/CD", "Event-Driven Architecture", "Feature Management", "Spec Driven Development"],
+      items: [
+        "Agile",
+        "CI/CD",
+        { name: "Event-Driven Architecture", ref: "Mapcom Systems" },
+        { name: "Feature Management", ref: "Vantaca" },
+        "Spec Driven Development",
+      ],
     },
   ],
 

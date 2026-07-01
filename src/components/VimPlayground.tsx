@@ -3,6 +3,8 @@ import CodeMirror from '@uiw/react-codemirror'
 import { json } from '@codemirror/lang-json'
 import { vim, getCM } from '@replit/codemirror-vim'
 import { EditorView } from '@codemirror/view'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { resume } from '../data/resume'
 
 const initialContent = [
@@ -15,7 +17,7 @@ const initialContent = [
   '## Skills',
   ...resume.skills.flatMap((g) => [
     `### ${g.category}`,
-    ...g.items.map((s) => `  - ${s}`),
+    ...g.items.map((s) => `  - ${typeof s === 'string' ? s : s.name}`),
     '',
   ]),
   '',
@@ -118,9 +120,8 @@ export default function VimPlayground() {
     }
   }
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(content)
-  }
+  type ViewMode = 'editor' | 'split' | 'preview'
+  const [viewMode, setViewMode] = useState<ViewMode>('editor')
 
   const modeColor =
     mode === 'INSERT' ? '#34d399' :
@@ -129,55 +130,93 @@ export default function VimPlayground() {
     mode === 'COMMAND' ? '#f59e0b' :
     '#38bdf8'
 
+  const [collapsed, setCollapsed] = useState(true)
+
+  const viewBtn = (v: ViewMode, label: string) => (
+    <button
+      className={`vim-btn${viewMode === v ? ' vim-btn-active' : ''}`}
+      onClick={() => setViewMode(v)}
+    >
+      {label}
+    </button>
+  )
+
+  const showEditor = viewMode === 'editor' || viewMode === 'split'
+  const showPreview = viewMode === 'preview' || viewMode === 'split'
+
   return (
-    <section id="vim" className="vim section">
+    <section id="playground" className="vim section">
       <div className="container">
-        <span className="section-label">Playground</span>
-        <h2 className="section-title">Vim Resume Editor</h2>
-        <p className="vim-intro">
-          Practice your Vim skills on the resume. Changes are sandboxed — nothing is saved.
-          Try <kbd>i</kbd> to insert, <kbd>ESC</kbd> for normal mode, <kbd>:w</kbd> to "save" (simulated), <kbd>u</kbd> to undo.
-        </p>
-        <div className="vim-container">
-          <div className="vim-header">
-            <div className="vim-mode" style={{ backgroundColor: modeColor }}>
-              {mode}
-            </div>
-            <span className="vim-filename">greer_goodman_resume.md</span>
-            <div className="vim-actions">
-              <button className="vim-btn" onClick={handleCopy}>Copy</button>
-              <button className="vim-btn vim-btn-reset" onClick={handleReset}>Reset</button>
-            </div>
+        <div className="playground-header" onClick={() => setCollapsed((c) => !c)}>
+          <div>
+            <span className="section-label">Playground</span>
           </div>
-          <div className="vim-editor">
-            <CodeMirror
-              value={content}
-              theme="dark"
-              extensions={[
-                json(),
-                vim(),
-                editorTheme,
-                EditorView.lineWrapping,
-                EditorView.updateListener.of((update) => {
-                  if (update.docChanged) {
-                    setContent(update.state.doc.toString())
-                  }
-                  readMode(update.view)
-                }),
-              ]}
-              onCreateEditor={handleCreate}
-              basicSetup={{
-                lineNumbers: true,
-                foldGutter: true,
-                bracketMatching: true,
-                closeBrackets: true,
-                highlightActiveLine: true,
-                history: true,
-                autocompletion: false,
-              }}
-            />
-          </div>
+          <button className="playground-toggle">
+            {collapsed ? 'Expand ▸' : 'Collapse ▾'}
+          </button>
         </div>
+        {!collapsed && (
+          <>
+            <h2 className="section-title">Vim Resume Editor</h2>
+            <p className="vim-intro">
+              Practice your Vim skills on the resume. Changes are sandboxed — nothing is saved.
+              Try <kbd>i</kbd> to insert, <kbd>ESC</kbd> for normal mode, <kbd>:w</kbd> to "save" (simulated), <kbd>u</kbd> to undo.
+            </p>
+            <div className="vim-container">
+              <div className="vim-header">
+                <div className="vim-mode" style={{ backgroundColor: modeColor }}>
+                  {mode}
+                </div>
+                <span className="vim-filename">greer_goodman_resume.md</span>
+                <div className="vim-actions">
+                  {viewBtn('editor', 'Edit')}
+                  {viewBtn('split', 'Split')}
+                  {viewBtn('preview', 'Preview')}
+                  <button className="vim-btn vim-btn-reset" onClick={handleReset}>Reset</button>
+                </div>
+              </div>
+              <div className={`vim-body${showEditor && showPreview ? ' vim-split' : ''}`}>
+                {showEditor && (
+                  <div className="vim-editor">
+                    <CodeMirror
+                      value={content}
+                      theme="dark"
+                      extensions={[
+                        json(),
+                        vim(),
+                        editorTheme,
+                        EditorView.lineWrapping,
+                        EditorView.updateListener.of((update) => {
+                          if (update.docChanged) {
+                            setContent(update.state.doc.toString())
+                          }
+                          readMode(update.view)
+                        }),
+                      ]}
+                      onCreateEditor={handleCreate}
+                      basicSetup={{
+                        lineNumbers: true,
+                        foldGutter: true,
+                        bracketMatching: true,
+                        closeBrackets: true,
+                        highlightActiveLine: true,
+                        history: true,
+                        autocompletion: false,
+                      }}
+                    />
+                  </div>
+                )}
+                {showPreview && (
+                  <div className="vim-preview">
+                    <div className="markdown-body">
+                      <Markdown remarkPlugins={[remarkGfm]}>{content}</Markdown>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </section>
   )
