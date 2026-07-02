@@ -1,4 +1,4 @@
-export type SkillItem = string | { name: string; ref?: string }
+export type SkillItem = string | { name: string; ref?: string };
 
 export const resume = {
   name: "Greer Goodman",
@@ -6,7 +6,7 @@ export const resume = {
   phone: "",
   email: "greergoodman6 [at] gmail [dot] com",
   website: "https://greergoodman.dev",
-  linkedin: "www.linkedin.com/in/greer-g-555820114",
+  linkedin: "https://www.linkedin.com/in/greer-g-555820114",
   github: "https://github.com/johncaveson",
   summary: [
     "Full Stack Software Engineer with 8+ years of experience building web applications, APIs, and cloud-native services using C#, .NET, React, and TypeScript.",
@@ -26,7 +26,12 @@ export const resume = {
     },
     {
       category: "Tools",
-      items: ["Vim", "Git", "VS Code", { name: "LaunchDarkly", ref: "Vantaca" }],
+      items: [
+        "Vim",
+        "Git",
+        "VS Code",
+        { name: "LaunchDarkly", ref: "Vantaca" },
+      ],
     },
     {
       category: "Frontend",
@@ -62,10 +67,7 @@ export const resume = {
     },
     {
       category: "Databases",
-      items: [
-        { name: "SQL Server", ref: "Owens & Minor" },
-        "Cosmos DB",
-      ],
+      items: [{ name: "SQL Server", ref: "Owens & Minor" }, "Cosmos DB"],
     },
     {
       category: "Development Practices",
@@ -153,17 +155,20 @@ export const resume = {
   projects: [
     {
       name: "Jellyfin",
-      description: "Contributed to the Jellyfin open source media server project (jellyfin-web), an MIT-licensed media solution.",
+      description:
+        "Contributed to the Jellyfin open source media server project (jellyfin-web), an MIT-licensed media solution.",
       url: "https://github.com/jellyfin/jellyfin-web",
     },
     {
       name: "Jira TUI",
-      description: "Built a terminal user interface for Jira in Rust with agentic assistance from Gemini, exploring async Rust, TUI frameworks, and REST API integration.",
+      description:
+        "Built a terminal user interface for Jira in Rust with agentic assistance from Gemini, exploring async Rust, TUI frameworks, and REST API integration.",
       url: "https://github.com/johncaveson/jira-tui",
     },
     {
       name: "Resume Site",
-      description: "Designed and built a personal portfolio and resume site using React, TypeScript, and Vite, deployed via AWS S3 and CloudFront with infrastructure as code.",
+      description:
+        "Designed and built a personal portfolio and resume site using React, TypeScript, and Vite, deployed via AWS S3 and CloudFront with infrastructure as code.",
       url: "https://greergoodman.dev",
     },
   ],
@@ -171,28 +176,33 @@ export const resume = {
   strengths: [
     {
       title: "Full-Stack Versatility",
-      description: "Deep experience across the entire stack — from React frontends to .NET microservices to cloud infrastructure — means I can own features end-to-end.",
+      description:
+        "Deep experience across the entire stack — from React frontends to .NET microservices to cloud infrastructure — means I can own features end-to-end.",
       icon: "⚡",
     },
     {
       title: "Technical Leadership",
-      description: "I don't just write code — I evaluate platforms, establish best practices, and mentor teams. I led LaunchDarkly adoption across a 20+ engineer organization.",
+      description:
+        "I don't just write code — I evaluate platforms, establish best practices, and mentor teams. I led LaunchDarkly adoption across a 20+ engineer organization.",
       icon: "🎯",
     },
     {
       title: "Modern Engineering Practices",
-      description: "CI/CD, feature flags, event-driven architecture, infrastructure as code — I bring production-tested patterns that reduce risk and increase velocity.",
+      description:
+        "CI/CD, feature flags, event-driven architecture, infrastructure as code — I bring production-tested patterns that reduce risk and increase velocity.",
       icon: "🛠️",
     },
     {
       title: "AI-Augmented Development",
-      description: "I leverage AI-assisted workflows to accelerate delivery while maintaining quality, demonstrated through both professional work and personal projects like Jira TUI.",
+      description:
+        "I leverage AI-assisted workflows to accelerate delivery while maintaining quality, demonstrated through both professional work and personal projects like Jira TUI.",
       icon: "🤖",
     },
     {
       title: "Lifelong Learner",
-      description: "I'm actively learning every day — whether it's mastering Vim, exploring Rust through side projects, or keeping up with the latest in cloud architecture. I bring curiosity and drive to everything I build.",
+      description:
+        "I'm actively learning every day — whether it's mastering Vim, exploring Rust through side projects, or keeping up with the latest in cloud architecture. I bring curiosity and drive to everything I build.",
       icon: "📚",
     },
   ],
-}
+};
