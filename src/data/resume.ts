@@ -22,6 +22,7 @@ export const resume = {
         "JavaScript",
         "SQL",
         { name: "Rust", ref: "project:Jira TUI" },
+        "Go",
       ],
     },
     {
@@ -137,7 +138,7 @@ export const resume = {
     {
       company: "Computer Resource Company",
       role: "Junior Developer",
-      period: "July 2017 – November 2019",
+      period: "July 2018 – November 2019",
       highlights: [
         "Maintained and enhanced the UniT platform, a financial trading application supporting ETF, stock option, and equity trades.",
         "Contributed to the evolution of Tradeport, the company's flagship trading platform, through ongoing bug fixes and feature updates.",
