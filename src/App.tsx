@@ -39,6 +39,7 @@ export default function App() {
     <>
       <FeatureFlagDemo />
       <Header />
+      <></>
       <main>
         <Hero />
         <Strengths />
