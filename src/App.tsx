@@ -11,10 +11,6 @@ import VimPlayground from "./components/VimPlayground";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-const t = () => {
-  return <></>;
-};
-
 function FeatureFlagDemo() {
   const { myFirstFlag } = useFlags();
   if (!myFirstFlag) return null;
