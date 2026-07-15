@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import posthog from 'posthog-js'
 import { resume } from '../data/resume'
 
 type Entry = { type: 'input' | 'output'; text: string }
@@ -145,6 +146,7 @@ export default function Terminal() {
       }
 
       if (command in commands) {
+        posthog.capture('terminal_command_run', { command })
         const lines = commands[command]()
         output.push({ type: 'output', text: '' })
         for (const l of lines) {

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import posthog from 'posthog-js'
 import CodeMirror from '@uiw/react-codemirror'
 import { json } from '@codemirror/lang-json'
 import { vim, getCM } from '@replit/codemirror-vim'
@@ -132,6 +133,15 @@ export default function VimPlayground() {
 
   const [collapsed, setCollapsed] = useState(true)
 
+  const togglePlayground = () => {
+    setCollapsed((isCollapsed) => {
+      if (isCollapsed) {
+        posthog.capture('playground_expanded')
+      }
+      return !isCollapsed
+    })
+  }
+
   const viewBtn = (v: ViewMode, label: string) => (
     <button
       className={`vim-btn${viewMode === v ? ' vim-btn-active' : ''}`}
@@ -147,7 +157,7 @@ export default function VimPlayground() {
   return (
     <section id="playground" className="vim section">
       <div className="container">
-        <div className="playground-header" onClick={() => setCollapsed((c) => !c)}>
+        <div className="playground-header" onClick={togglePlayground}>
           <div>
             <span className="section-label">Playground</span>
           </div>

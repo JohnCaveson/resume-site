@@ -1,3 +1,4 @@
+import posthog from 'posthog-js'
 import { resume } from '../data/resume'
 
 export default function Contact() {
@@ -12,7 +13,13 @@ export default function Contact() {
             solve challenging problems, and deliver real impact. Whether you have a specific role
             in mind or just want to connect, I'd love to hear from you.
           </p>
-          <a href={resume.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
+          <a
+            href={resume.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary btn-large"
+            onClick={() => posthog.capture('contact_cta_clicked', { destination: 'linkedin' })}
+          >
             Connect on LinkedIn
           </a>
           <div className="contact-details">
