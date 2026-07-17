@@ -161,6 +161,12 @@ export const resume = {
       url: "https://github.com/jellyfin/jellyfin-web",
     },
     {
+      name: "PostHog",
+      description:
+        "Contributed to PostHog's wizard by adding OpenCode to the MCP installation step.",
+      url: "https://github.com/PostHog/wizard/pull/913#event-28129261145",
+    },
+    {
       name: "Jira TUI",
       description:
         "Built a terminal user interface for Jira in Rust with agentic assistance from Gemini, exploring async Rust, TUI frameworks, and REST API integration.",
