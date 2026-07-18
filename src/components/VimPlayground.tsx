@@ -109,6 +109,7 @@ export default function VimPlayground() {
   }
 
   const handleReset = () => {
+    posthog.capture('playground_reset_clicked')
     setContent(initialContent)
     if (viewRef.current) {
       viewRef.current.dispatch({
@@ -145,7 +146,10 @@ export default function VimPlayground() {
   const viewBtn = (v: ViewMode, label: string) => (
     <button
       className={`vim-btn${viewMode === v ? ' vim-btn-active' : ''}`}
-      onClick={() => setViewMode(v)}
+      onClick={() => {
+        posthog.capture('playground_view_changed', { view_mode: v })
+        setViewMode(v)
+      }}
     >
       {label}
     </button>

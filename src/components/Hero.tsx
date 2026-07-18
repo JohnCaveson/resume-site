@@ -1,3 +1,4 @@
+import posthog from 'posthog-js'
 import { resume } from '../data/resume'
 
 export default function Hero() {
@@ -10,8 +11,20 @@ export default function Hero() {
           <h2 className="hero-title">{resume.title}</h2>
           <p className="hero-summary">{resume.summary[0]}</p>
           <div className="hero-actions">
-            <a href="#contact" className="btn btn-primary">Get In Touch</a>
-            <a href="#experience" className="btn btn-secondary">View Experience</a>
+            <a
+              href="#contact"
+              className="btn btn-primary"
+              onClick={() => posthog.capture('hero_cta_clicked', { destination: 'contact' })}
+            >
+              Get In Touch
+            </a>
+            <a
+              href="#experience"
+              className="btn btn-secondary"
+              onClick={() => posthog.capture('hero_cta_clicked', { destination: 'experience' })}
+            >
+              View Experience
+            </a>
           </div>
           <div className="hero-links">
             <a href={resume.linkedin} target="_blank" rel="noopener noreferrer" className="hero-link" aria-label="LinkedIn (alt)">

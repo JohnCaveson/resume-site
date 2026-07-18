@@ -1,0 +1,42 @@
+[
+  {
+    "event_name": "hero_cta_clicked",
+    "event_description": "Captures a visitor selecting a primary call to action from the hero section.",
+    "file": "src/components/Hero.tsx"
+  },
+  {
+    "event_name": "navigation_link_clicked",
+    "event_description": "Captures navigation to a portfolio section from the site header.",
+    "file": "src/components/Header.tsx"
+  },
+  {
+    "event_name": "playground_view_changed",
+    "event_description": "Captures a visitor changing the Vim playground display mode.",
+    "file": "src/components/VimPlayground.tsx"
+  },
+  {
+    "event_name": "playground_reset_clicked",
+    "event_description": "Captures a visitor resetting the Vim playground content.",
+    "file": "src/components/VimPlayground.tsx"
+  },
+  {
+    "event_name": "playground_expanded",
+    "event_description": "Captures a visitor opening the interactive Vim playground.",
+    "file": "src/components/VimPlayground.tsx"
+  },
+  {
+    "event_name": "project_link_clicked",
+    "event_description": "Captures a visitor opening a project repository from the portfolio.",
+    "file": "src/components/Projects.tsx"
+  },
+  {
+    "event_name": "contact_cta_clicked",
+    "event_description": "Captures a visitor selecting the primary professional contact action.",
+    "file": "src/components/Contact.tsx"
+  },
+  {
+    "event_name": "terminal_command_run",
+    "event_description": "Captures use of a recognized command in the interactive resume terminal.",
+    "file": "src/components/Terminal.tsx"
+  }
+]
