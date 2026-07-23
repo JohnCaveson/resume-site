@@ -106,7 +106,7 @@ export const resume = {
     },
     {
       company: "Dominion Energy",
-      role: "Full Stack Software Engineer",
+      role: "Programmer Analyst",
       period: "October 2023 – March 2024",
       highlights: [
         "Modernized a legacy PHP application into a React SPA backed by .NET 6 Minimal APIs.",
